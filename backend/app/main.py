@@ -1,17 +1,28 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="Inventory Control API")
+app = FastAPI(title="KREAT APP",
+    description="Inventory Control API",
+    version="0.1.0"
+)
 
-# Configure CORS
+origins = [
+    "http://localhost:3000",
+    "http://localhost:5173"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], # Next.js default port
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@app.get("/")
+@app.get("/", tags=["Root"])
 def read_root():
-    return {"message": "Welcome to the Inventory Control API"}
+    return {
+        "message": "Bienvenido a la API de KREAT APP",
+        "status": "online",
+        "docs": "/docs"
+    }

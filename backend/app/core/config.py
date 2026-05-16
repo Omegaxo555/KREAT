@@ -1,11 +1,11 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Inventory Control API"
+    PROJECT_NAME: str = "KREAT APP"
     POSTGRES_SERVER: str = "localhost"
     POSTGRES_USER: str = "postgres"
-    POSTGRES_PASSWORD: str = "password123"
-    POSTGRES_DB: str = "inventory_db"
+    POSTGRES_PASSWORD: str = "123456789"
+    POSTGRES_DB: str = "kreat_app_db"
     POSTGRES_PORT: str = "5432"
 
     @property
