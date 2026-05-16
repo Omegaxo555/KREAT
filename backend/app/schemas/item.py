@@ -1,5 +1,25 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from datetime import datetime
+from typing import Optional, Literal
+
+#Esquemas para QR
+class QRScanInput(BaseModel):
+    qr_code: str = Field(..., min_length=4)
+    type: Literal["IN","OUT"]
+    quantity: int = Field(..., gt=0)
+    notes: Optional[str]= None
+
+class MovementLogResponse(BaseModel):
+    id: int
+    item_id: int
+    type: str
+    quantity: int
+    timestamp: datetime
+    notes: Optional[str]
+    
+    class Config:
+        from_attributes = True
+
 
 # Esquemas para Locations
 class LocationBase(BaseModel):
